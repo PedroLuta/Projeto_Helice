@@ -1,0 +1,22 @@
+Read me Harpia Aerodesign - 2021
+
+1-  Deixar todos os arquivos na mesma pasta
+
+2- Seguir os arquivos exemplos para input da helice e motor:
+  
+    .Prop24x15
+    .TmotorKV190
+
+
+3- Rodar o Prop_loads2.m    
+
+4- o output do Qprop estará na mesma pasta: Prop24x15_out
+
+5- o output das forças por seção (dT e dQ) de uma pá estará em um arquivo excel: BladeLoads
+
+
+O tutorial completo está na pasta:
+https://drive.google.com/drive/folders/1WsDtnic0gkySv_vXnY2PvPPqN9puzewD?usp=sharing
+
+
+é isso, faça bom uso do kpop <3

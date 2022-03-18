@@ -1,0 +1,5 @@
+0.34  6.3   ! CL0     CL_a
+0  1.2       ! CLmin   CLmax
+
+0.011   0.02   0.037   0.55   !  CD0    CD2u   CD2l   CLCD0
+150000   -0.5              !  REref  REexp

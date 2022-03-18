@@ -1,0 +1,1531 @@
+Dim swApp As Object
+
+Dim Part As Object
+Dim skPoint As Object
+Dim skSegment As Object
+Dim boolstatus As Boolean
+Dim longstatus As Long, longwarnings As Long
+Dim myRefPlane As Object
+
+Sub main()
+
+Set swApp = Application.SldWorks
+
+Set Part = swApp.ActiveDoc
+
+
+
+boolstatus = Part.Extension.selectbyid2("Curva1", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva2", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva3", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva4", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva5", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva6", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva7", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva8", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva9", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva10", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva11", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva12", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva13", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva14", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva15", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva16", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva17", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva18", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva19", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva20", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva21", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva22", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva23", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva24", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva25", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva26", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+boolstatus = Part.Extension.selectbyid2("Curva27", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+Set myRefPlane = Part.FeatureManager.InsertRefPlane(4, 0, 0, 0, 0, 0)
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano1", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva1", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(-3e-05, 0.00736, 0, 3e-05, 0.00736, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano2", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva2", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(7e-05, 0.00794, 0, 0.00014, 0.00794, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano3", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva3", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00043, 0.00952, 0, 0.0005, 0.00951, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano4", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva4", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00115, 0.0119, 0, 0.00123, 0.01189, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano5", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva5", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00232, 0.01482, 0, 0.00239, 0.01481, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano6", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva6", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00389, 0.0179, 0, 0.00396, 0.01789, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano7", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva7", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00562, 0.02069, 0, 0.00568, 0.02068, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano8", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva8", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00706, 0.02271, 0, 0.00711, 0.02269, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano9", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva9", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00766, 0.02348, 0, 0.0077, 0.02346, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+Call main2()
+End Sub
+
+
+
+
+Sub main2()
+
+Set swApp = Application.SldWorks
+
+Set Part = swApp.ActiveDoc
+
+
+
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano10", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva10", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00685, 0.02318, 0, 0.0069, 0.02316, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano11", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva11", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00594, 0.02197, 0, 0.00598, 0.02196, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano12", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva12", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00507, 0.02037, 0, 0.00511, 0.02036, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano13", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva13", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00432, 0.01876, 0, 0.00436, 0.01875, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano14", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva14", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00373, 0.01738, 0, 0.00377, 0.01737, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano15", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva15", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00328, 0.01635, 0, 0.00332, 0.01634, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano16", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva16", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00297, 0.01571, 0, 0.003, 0.0157, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano17", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva17", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00274, 0.01541, 0, 0.00278, 0.01541, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano18", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva18", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00258, 0.01534, 0, 0.00262, 0.01533, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano19", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva19", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00245, 0.01534, 0, 0.00248, 0.01533, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+Call main3()
+End Sub
+
+
+
+
+Sub main3()
+
+Set swApp = Application.SldWorks
+
+Set Part = swApp.ActiveDoc
+
+
+
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano20", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva20", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00232, 0.01523, 0, 0.00235, 0.01523, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano21", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva21", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00215, 0.01484, 0, 0.00218, 0.01483, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano22", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva22", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00194, 0.01398, 0, 0.00196, 0.01398, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano23", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva23", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00166, 0.01252, 0, 0.00169, 0.01252, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano24", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva24", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00132, 0.01037, 0, 0.00134, 0.01037, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano25", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva25", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(0.00092, 0.00752, 0, 0.00093, 0.00752, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano26", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva26", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(-0.0, 0.00406, 0, -0.0, 0.00406, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+
+
+
+boolstatus = Part.Extension.SelectByID2("Plano27", "PLANE", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.selectbyid2("Curva27", "REFERENCECURVES", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.SketchManager.SketchUseEdge3(False, False)
+Set skSegment = Part.SketchManager.CreateLine(-0.0, 0.00349, 0, -0.0, 0.00349, 0)
+Set skSegment = Part.SketchManager.CreateCenterLine(-0.03, -0.05, 0, -0.04, -0.06, 0)
+Set skPoint = Part.SketchManager.CreatePoint(0, 0, 0)
+
+boolstatus = Part.Extension.SelectByID2("Point1", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point2", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point3", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point4", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchConstraintsDelAll
+
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+Part.SketchAddConstraints "sgFIXED"
+boolstatus = Part.Extension.SelectByID2("Line1", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgPARALLEL"
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgTANGENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point6", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Line2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+boolstatus = Part.Extension.SelectByID2("Point5", "SKETCHPOINT", 0, 0, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Spline2", "SKETCHSEGMENT", 0, 0, 0, True, 0, Nothing, 0)
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.SketchManager.InsertSketch True
+End Sub
