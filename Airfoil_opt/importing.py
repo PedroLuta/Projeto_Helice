@@ -9,7 +9,7 @@ import subprocess as sp
 from math import inf as infinite
 #import concurrent.futures
 import Auxiliary
-from smt.sampling_methods import LHS
+#from smt.sampling_methods import LHS
 import json
 
 from numpy.core.fromnumeric import size

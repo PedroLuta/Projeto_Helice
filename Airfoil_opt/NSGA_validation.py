@@ -1,44 +1,31 @@
-from importing import *
-
-#functions import
-import PARSEC_functions
-import optimization_NSGA2 as optim
-import optimization_GA as optimGA
+import optimization_NSGA2
+import matplotlib.pyplot as plt
 
 from pymoo.factory import get_problem
 from pymoo.util.plotting import plot
 
-
-
-
 def evaluate(chrom):
-    x1, x2 = chrom[0], chrom[1]
+    x1, x2 = chrom['x1'], chrom['x2']
     f1 = 4*(x1**2) + 4*(x2**2)
     f2 = (x1 - 5)**2 + (x2 - 5)**2
     return [f1, f2]
 
 def is_valid(chrom):
-    x1, x2 = chrom[0], chrom[1]
+    x1, x2 = chrom['x1'], chrom['x2']
     C1 = (x1 - 5)**2 + x2**2 #≤ 25
     C2 = (x1 - 8)**2 + (x2 + 3)**2 #≥ 7.7
     if (C1 > 25) or C2 < 7.7:
         return False
     return True
 
-from pymoo.factory import get_problem
-from pymoo.util.plotting import plot
+absolute_limits = {'x1':[0, 5], 'x2':[0, 3]}
 
-absolute_limits = [[0, 5], [0, 3]]
+optimization = optimization_NSGA2.NSGA2_v1(n_ind = 500, n_gen = 50, mut_rate = 0.1, t_size = 2, decimal_places = 4)
+optimization.set_population_limits(absolute_limits)
+optimization.set_functions(evaluate, is_valid)
+optimization.run()
 
-n_ind = 300
-archive_size = 600
-mut_rate = 0.0
-t_size = 2
-convergence = 4
-
-optimized_pop = optim.run_GA_convergence_new(n_ind, absolute_limits, evaluate, mut_rate = mut_rate, t_size = t_size, valid_func = is_valid, gwcfc = convergence, archive_size = archive_size)
-
-for individual in optimized_pop:
+for individual in optimization.current_pop:
     funcs = evaluate(individual.get_chrom())
     plt.plot(funcs[0], funcs[1], 'bo')
 plt.plot(funcs[0], funcs[1], 'bo', label = "Individual")
@@ -48,5 +35,3 @@ plt.title("NSGA-II Convergence test")
 plt.xlabel("f1")
 plt.ylabel("f2")
 plot(problem.pareto_front(), no_fill = True, labels = 'Pareto-front')
-#plt.legend()
-#plt.show()

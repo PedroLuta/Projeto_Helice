@@ -1,38 +1,37 @@
-from importing import *
-import simulate
-from pyqprop import *
-import Chord_dist
+import optimization_NSGA2
+import matplotlib.pyplot as plt
 
-rpm = 2500
-radps = rpm*2*pi/60
-Radius = 0.3
-p = 0.2
-Blades = 2
-V = 16
-alphas = [2, 8, 0.25]
-sections = 21
+from pymoo.factory import get_problem
+from pymoo.util.plotting import plot
 
-r_vector1, chord1, Beta1 = Chord_dist.blade_design_vortex_v1_2(V, radps, Blades, p, Radius, sections = sections, Cl_ref = 1.2, Cd_ref = 0.014, a_ref = 4, Prescribed_power = 520, Prescribed_thrust = 5, init_disp = 0)
-r_vector2, chord2, Beta2 = Chord_dist.blade_design_vortex_v1_1(V, radps, Blades, p, Radius, airfoil = "airfoils\\sunnysky.dat", sections = sections, alphas = alphas, Prescribed_power = 520, Prescribed_thrust = 5, init_disp = 1)
-#fixed_pitch_qprop_v2(16, radps, 2, [0.1, 0.2, 0.3], [45, 30, 15], [0.06, 0.04, 0], airfoil = 'airfoils\\sunnysky.dat')
+def evaluate(chrom):
+    x1, x2 = chrom['x1'], chrom['x2']
+    f1 = 4*(x1**2) + 4*(x2**2)
+    f2 = (x1 - 5)**2 + (x2 - 5)**2
+    return [f1, f2]
 
-R_vec1 = [r/Radius for r in r_vector1]
-R_vec2 = [r/Radius for r in r_vector2]
+def is_valid(chrom):
+    x1, x2 = chrom['x1'], chrom['x2']
+    C1 = (x1 - 5)**2 + x2**2 #≤ 25
+    C2 = (x1 - 8)**2 + (x2 + 3)**2 #≥ 7.7
+    if (C1 > 25) or C2 < 7.7:
+        return False
+    return True
 
-plt.plot(R_vec1, chord1, 'r', label = "fixed Cl and Cd")
-plt.plot(R_vec2, chord2, 'b', label = "iterative Cl and Cd")
-plt.legend()
-plt.show()
+absolute_limits = {'x1':[0, 5], 'x2':[0, 3]}
 
-# absolute_limits = nup.array([[0, 5], [0, 3]])
+optimization = optimization_NSGA2.NSGA2_v1(n_ind = 500, n_gen = 50, mut_rate = 0.1, t_size = 2, decimal_places = 4)
+optimization.set_population_limits(absolute_limits)
+optimization.set_functions(evaluate, is_valid)
+optimization.run()
 
-# sampling = LHS(xlimits = absolute_limits)
-
-# num = 50
-# x = sampling(num)
-
-# plt.plot(x[:, 0], x[:, 1], "o")
-# plt.xlabel("x")
-# plt.ylabel("y")
-# plt.show()
-
+for individual in optimization.current_pop:
+    funcs = evaluate(individual.get_chrom())
+    plt.plot(funcs[0], funcs[1], 'bo')
+plt.plot(funcs[0], funcs[1], 'bo', label = "Individual")
+plt.plot(funcs[0], funcs[1], 'r', label = "Pareto-front")
+problem = get_problem("bnh")
+plt.title("NSGA-II Convergence test")
+plt.xlabel("f1")
+plt.ylabel("f2")
+plot(problem.pareto_front(), no_fill = True, labels = 'Pareto-front')
