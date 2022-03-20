@@ -20,7 +20,8 @@ def is_valid(chrom):
 
 absolute_limits = {'x1':[0, 5], 'x2':[0, 3]}
 
-optimization = optimization_NSGA2.NSGA2_v2(n_ind = 100, mut_rate = 0.05, t_size = 2, decimal_places = 4, convergence = 5, tolerance_area = 2)
+optimization = optimization_NSGA2.NSGA2_v1(n_ind = 100, n_gen = 50, mut_rate = 0.05, t_size = 2, dp = 4)
+#optimization = optimization_NSGA2.NSGA2_v2(n_ind = 100, mut_rate = 0.05, t_size = 2, dp = 4, convergence = 50, ma_len = 10, ma_tol = 0.005)
 optimization.set_population_limits(absolute_limits)
 optimization.set_functions(evaluate, is_valid)
 optimization.run()

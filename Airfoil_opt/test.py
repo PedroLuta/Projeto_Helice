@@ -23,7 +23,7 @@ absolute_limits = {'x1':[0, 5], 'x2':[0, 3]}
 optimization = optimization_NSGA2.NSGA2_v1(n_ind = 500, n_gen = 50, mut_rate = 0.1, t_size = 2, decimal_places = 4)
 optimization.set_population_limits(absolute_limits)
 optimization.set_functions(evaluate, is_valid)
-optimization.run()
+optimization.run_v2()
 
 for individual in optimization.current_pop:
     funcs = evaluate(individual.get_chrom())

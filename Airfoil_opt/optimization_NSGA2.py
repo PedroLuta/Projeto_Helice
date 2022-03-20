@@ -50,12 +50,12 @@ class Individual:
         return self.ID
 
 class NSGA2_v1:
-    def __init__(self, n_ind = 0, n_gen = 0, mut_rate = 0, t_size = 0, decimal_places = 4): 
+    def __init__(self, n_ind = 0, n_gen = 0, mut_rate = 0, t_size = 0, dp = 4): 
         self.n_ind = n_ind
         self.n_gen = n_gen
         self.mut_rate = mut_rate
         self.t_size = t_size
-        self.decimal_places = decimal_places
+        self.dp = dp
 
     def set_population_limits(self, limits): 
         y = {}
@@ -71,8 +71,8 @@ class NSGA2_v1:
         print("Geração 1")
         self.create_first_gen()
         self.evaluate_population(self.current_pop)
-        self.current_pop = self.assign_fronts(self.current_pop)
-        self.current_pop = self.assign_crowding(self.current_pop)
+        self.current_pop = assign_fronts(self.current_pop)
+        self.current_pop = assign_crowding(self.current_pop)
         for generation in range(2, self.n_gen + 1): 
             print(f"Geração {generation}")
             self.create_offspring()
@@ -97,11 +97,11 @@ class NSGA2_v1:
         length = len(self.current_pop)
         for individual in self.current_pop:
             init_chrom_pop.append(individual.get_chrom())
-        population = self.strip_rejected(self.current_pop)
+        population = strip_rejected(self.current_pop)
         while len(chrom_pop) < length:
             mother = self.select_tournament(population)
             father = self.select_tournament(population)
-            son_chrom = self.crossoverFull(mother.get_chrom(), father.get_chrom())
+            son_chrom = self.crossover(mother.get_chrom(), father.get_chrom())
             son_chrom = self.mutate(son_chrom)
             if self.validate(son_chrom) and (son_chrom not in init_chrom_pop):
                 chrom_pop.append(son_chrom)
@@ -116,10 +116,10 @@ class NSGA2_v1:
         pop_new = self.offspring.copy()
         length = len(pop_ini)
         pop_ini.extend(pop_new)
-        pop_ini = self.strip_rejected(pop_ini)
-        pop_ini = self.strip_equal(pop_ini)
-        pop_ini = self.assign_fronts(pop_ini)
-        pop_ini = self.assign_crowding(pop_ini)
+        pop_ini = strip_rejected(pop_ini)
+        pop_ini = strip_equal(pop_ini)
+        pop_ini = assign_fronts(pop_ini)
+        pop_ini = assign_crowding(pop_ini)
         pop_final = []
         while len(pop_final) < length and len(pop_ini) > 0:
             best = pop_ini[0]
@@ -151,70 +151,11 @@ class NSGA2_v1:
         chrom = {}
         for key in self.limits:
             parameter = random.uniform(self.limits[key][0], self.limits[key][1])
-            param = round(parameter, self.decimal_places)
+            param = round(parameter, self.dp)
             chrom[key] = param
         return chrom
 
-    def assign_fronts(self, pop): #CHECKED - OK1
-        copy = pop.copy()
-        new_pop = []
-        front = 1
-        while len(copy) > 0:
-            self.assign_domination(copy)
-            i = 0
-            while i < len(copy):
-                if copy[i].get_Dominated_counter() == 0:
-                    copy[i].set_Front(front)
-                    new_pop.append(copy[i])
-                    copy.pop(i)
-                else:
-                    i += 1
-            front += 1
-        return new_pop
-
-    def assign_domination(self, population): #CHECKED - OK1
-        n_objvals = len(population[0].get_ObjVal())
-        length = len(population)
-        if length == 1:
-            population[0].set_Dominated_counter(0)
-            return
-        if length == 0:
-            return
-        for i in range(length):
-            dominated_counter = 0
-            for j in range(length):
-                if j == i:
-                    continue
-                if self.calculate_domination(population[j], population[i], n_objvals):
-                    dominated_counter += 1
-            population[i].set_Dominated_counter(dominated_counter)
-
-    def calculate_domination(self, indA, indB, n_objvals): #CHECKED - OK1
-        boolA = indA.get_ObjVal(0) <= indB.get_ObjVal(0)
-        boolB = indA.get_ObjVal(0) < indB.get_ObjVal(0)
-        for i in range(1, n_objvals):
-            boolA = boolA and (indA.get_ObjVal(i) <= indB.get_ObjVal(i))
-            boolB = boolB or (indA.get_ObjVal(i) < indB.get_ObjVal(i))
-        return (boolA and boolB) #if True, A dominates B, if False, A does not dominate B
-
-    def assign_crowding(self, pop): #CHECKED - OK1
-        population = pop.copy()
-        n_objvals = len(population[0].get_ObjVal())
-        length = len(population)
-        for ind in population:
-            ind.set_Crowding(0)
-        for i in range(n_objvals):
-            copy = self.sort_ObjVal(population, i)
-            copy[0].set_Crowding(infinite)
-            copy[-1].set_Crowding(infinite)
-            minval = copy[0].get_ObjVal(i)
-            maxval = copy[-1].get_ObjVal(i)
-            for j in range(1, length - 1):
-                crowding = abs((copy[j + 1].get_ObjVal(i) - copy[j - 1].get_ObjVal(i))/(maxval - minval)) 
-                copy[j].set_Crowding(copy[j].get_Crowding() + crowding)
-        return copy
-
-    def crossoverFull(self, mother, father): #CHECKED - OK1 - IT WAS NOT OK
+    def crossover(self, mother, father): #CHECKED - OK1 - IT WAS NOT OK
         son_genes = {}
         for key in mother:
             chosen = random.random()
@@ -230,7 +171,7 @@ class NSGA2_v1:
             mut = random.random()
             if mut < self.mut_rate:
                 parameter = random.uniform(self.limits[key][0], self.limits[key][1])
-                param = round(parameter, self.decimal_places)
+                param = round(parameter, self.dp)
                 copy[key] = param
         return copy
 
@@ -247,28 +188,6 @@ class NSGA2_v1:
             best = self.battle(best, new)
         return best
 
-    def strip_equal(self, population): #CHECKED - OK1
-        res = []
-        chrom_vec = []
-        chrom_vec.append(population[0].get_chrom())
-        res.append(population[0])
-        for i in range(1, len(population)):
-            new_chrom = population[i].get_chrom()
-            if new_chrom not in chrom_vec:
-                chrom_vec.append(new_chrom)
-                res.append(population[i])
-        return res
-
-    def strip_rejected(self, population): #CHECKED - OK1 - OK2
-        i = 0
-        while i < len(population): 
-            if not population[i].get_valid():
-                population.pop(i)
-                # i -= 1
-            else:
-                i += 1
-        return population
-
     def battle(self, indA, indB): #CHECKED - OK1
         if indA.get_Front() < indB.get_Front():
             return indA
@@ -277,31 +196,17 @@ class NSGA2_v1:
                 return indA
         return indB
 
-    def sort_ObjVal(self, population, objval_index): #CHECKED - OK1
-        new_pop = []
-        copy = population.copy()
-        while len(copy) > 0:
-            min_obj_val = infinite
-            i = 0
-            hold = 0
-            while i < len(copy):
-                obj_val = copy[i].get_ObjVal(objval_index)
-                if obj_val < min_obj_val:
-                    min_obj_val = obj_val
-                    hold = i
-                i += 1
-            new_pop.append(copy[hold])
-            copy.pop(hold)
-        return new_pop
+
 
 class NSGA2_v2:
-    def __init__(self, n_ind = 0, mut_rate = 0, t_size = 0, decimal_places = 4, convergence = 0, tolerance_area = 0): 
+    def __init__(self, n_ind = 0, mut_rate = 0, t_size = 0, dp = 4, convergence = 0, ma_len = 0, ma_tol = 0): 
         self.n_ind = n_ind
         self.mut_rate = mut_rate
         self.t_size = t_size
-        self.decimal_places = decimal_places
+        self.dp = dp
         self.convergence = convergence
-        self.tolerance_area = tolerance_area
+        self.ma_len = ma_len
+        self.ma_tol = ma_tol
 
     def set_population_limits(self, limits): 
         y = {}
@@ -317,24 +222,30 @@ class NSGA2_v2:
         print("Geração 1")
         self.create_first_gen() 
         self.evaluate_population(self.current_pop)
-        self.current_pop = self.assign_fronts(self.current_pop)
-        self.current_pop = self.assign_crowding(self.current_pop)
-        area = self.area_under_Front(self.current_pop)
+        self.current_pop = assign_fronts(self.current_pop)
+        self.current_pop = assign_crowding(self.current_pop)
+        area_vec = []
+        area_vec.append(area_under_Front(self.current_pop))
+        moving_average = sum(area_vec)
         stillness_count = 0
         generation = 2
         while stillness_count < self.convergence:
             print(f"Geração {generation}")
+            print(f"Moving Average = {moving_average}")
             self.create_offspring() 
             self.reinsert() 
-            new_area = self.area_under_Front(self.current_pop)
-            if abs(area - new_area) < self.tolerance_area:
+            if len(area_vec) > self.ma_len:
+                area_vec.pop(0)
+            area_vec.append(area_under_Front(self.current_pop))
+            new_moving_average = sum(area_vec)/len(area_vec)
+            if abs(new_moving_average/moving_average - 1) < self.ma_tol:
                 stillness_count += 1
-            else: 
-                area = new_area
+            else:
                 stillness_count = 0
-            print(area)
-            print(f'Não há alterações nos melhores indivíduos há {stillness_count} gerações')
+            moving_average = new_moving_average
+            plt.plot(generation, moving_average, 'ro')
             generation += 1
+        plt.show()
 
     def create_first_gen(self): #CHECKED - OK1 - OK2
         individuals = 0 
@@ -355,11 +266,11 @@ class NSGA2_v2:
         length = len(self.current_pop)
         for individual in self.current_pop:
             init_chrom_pop.append(individual.get_chrom())
-        population = self.strip_rejected(self.current_pop)
+        population = strip_rejected(self.current_pop)
         while len(chrom_pop) < length:
             mother = self.select_tournament(population)
             father = self.select_tournament(population)
-            son_chrom = self.crossoverFull(mother.get_chrom(), father.get_chrom())
+            son_chrom = self.crossover(mother.get_chrom(), father.get_chrom())
             son_chrom = self.mutate(son_chrom)
             if self.validate(son_chrom) and (son_chrom not in init_chrom_pop):
                 chrom_pop.append(son_chrom)
@@ -374,10 +285,10 @@ class NSGA2_v2:
         pop_new = self.offspring.copy()
         length = len(pop_ini)
         pop_ini.extend(pop_new)
-        pop_ini = self.strip_rejected(pop_ini)
-        pop_ini = self.strip_equal(pop_ini)
-        pop_ini = self.assign_fronts(pop_ini)
-        pop_ini = self.assign_crowding(pop_ini)
+        pop_ini = strip_rejected(pop_ini)
+        pop_ini = strip_equal(pop_ini)
+        pop_ini = assign_fronts(pop_ini)
+        pop_ini = assign_crowding(pop_ini)
         pop_final = []
         while len(pop_final) < length and len(pop_ini) > 0:
             best = pop_ini[0]
@@ -409,70 +320,11 @@ class NSGA2_v2:
         chrom = {}
         for key in self.limits:
             parameter = random.uniform(self.limits[key][0], self.limits[key][1])
-            param = round(parameter, self.decimal_places)
+            param = round(parameter, self.dp)
             chrom[key] = param
         return chrom
 
-    def assign_fronts(self, pop): #CHECKED - OK1
-        copy = pop.copy()
-        new_pop = []
-        front = 1
-        while len(copy) > 0:
-            self.assign_domination(copy)
-            i = 0
-            while i < len(copy):
-                if copy[i].get_Dominated_counter() == 0:
-                    copy[i].set_Front(front)
-                    new_pop.append(copy[i])
-                    copy.pop(i)
-                else:
-                    i += 1
-            front += 1
-        return new_pop
-
-    def assign_domination(self, population): #CHECKED - OK1
-        n_objvals = len(population[0].get_ObjVal())
-        length = len(population)
-        if length == 1:
-            population[0].set_Dominated_counter(0)
-            return
-        if length == 0:
-            return
-        for i in range(length):
-            dominated_counter = 0
-            for j in range(length):
-                if j == i:
-                    continue
-                if self.calculate_domination(population[j], population[i], n_objvals):
-                    dominated_counter += 1
-            population[i].set_Dominated_counter(dominated_counter)
-
-    def calculate_domination(self, indA, indB, n_objvals): #CHECKED - OK1
-        boolA = indA.get_ObjVal(0) <= indB.get_ObjVal(0)
-        boolB = indA.get_ObjVal(0) < indB.get_ObjVal(0)
-        for i in range(1, n_objvals):
-            boolA = boolA and (indA.get_ObjVal(i) <= indB.get_ObjVal(i))
-            boolB = boolB or (indA.get_ObjVal(i) < indB.get_ObjVal(i))
-        return (boolA and boolB) #if True, A dominates B, if False, A does not dominate B
-
-    def assign_crowding(self, pop): #CHECKED - OK1
-        population = pop.copy()
-        n_objvals = len(population[0].get_ObjVal())
-        length = len(population)
-        for ind in population:
-            ind.set_Crowding(0)
-        for i in range(n_objvals):
-            copy = self.sort_ObjVal(population, i)
-            copy[0].set_Crowding(infinite)
-            copy[-1].set_Crowding(infinite)
-            minval = copy[0].get_ObjVal(i)
-            maxval = copy[-1].get_ObjVal(i)
-            for j in range(1, length - 1):
-                crowding = abs((copy[j + 1].get_ObjVal(i) - copy[j - 1].get_ObjVal(i))/(maxval - minval)) 
-                copy[j].set_Crowding(copy[j].get_Crowding() + crowding)
-        return copy
-
-    def crossoverFull(self, mother, father): #CHECKED - OK1 - IT WAS NOT OK
+    def crossover(self, mother, father): #CHECKED - OK1 - IT WAS NOT OK
         son_genes = {}
         for key in mother:
             chosen = random.random()
@@ -488,7 +340,7 @@ class NSGA2_v2:
             mut = random.random()
             if mut < self.mut_rate:
                 parameter = random.uniform(self.limits[key][0], self.limits[key][1])
-                param = round(parameter, self.decimal_places)
+                param = round(parameter, self.dp)
                 copy[key] = param
         return copy
 
@@ -505,28 +357,6 @@ class NSGA2_v2:
             best = self.battle(best, new)
         return best
 
-    def strip_equal(self, population): #CHECKED - OK1
-        res = []
-        chrom_vec = []
-        chrom_vec.append(population[0].get_chrom())
-        res.append(population[0])
-        for i in range(1, len(population)):
-            new_chrom = population[i].get_chrom()
-            if new_chrom not in chrom_vec:
-                chrom_vec.append(new_chrom)
-                res.append(population[i])
-        return res
-
-    def strip_rejected(self, population): #CHECKED - OK1 - OK2
-        i = 0
-        while i < len(population): 
-            if not population[i].get_valid():
-                population.pop(i)
-                # i -= 1
-            else:
-                i += 1
-        return population
-
     def battle(self, indA, indB): #CHECKED - OK1
         if indA.get_Front() < indB.get_Front():
             return indA
@@ -534,65 +364,6 @@ class NSGA2_v2:
             if indA.get_Crowding() > indB.get_Crowding():
                 return indA
         return indB
-
-    def sort_ObjVal(self, population, objval_index): #CHECKED - OK1
-        new_pop = []
-        copy = population.copy()
-        while len(copy) > 0:
-            min_obj_val = infinite
-            i = 0
-            hold = 0
-            while i < len(copy):
-                obj_val = copy[i].get_ObjVal(objval_index)
-                if obj_val < min_obj_val:
-                    min_obj_val = obj_val
-                    hold = i
-                i += 1
-            new_pop.append(copy[hold])
-            copy.pop(hold)
-        return new_pop
-
-    def area_under_Front(self, population):
-        pareto_front = self.return_pareto_front(population)
-        area = self.calculate_hyper_volume(pareto_front)
-        return area
-
-    def return_pareto_front(self, population):
-        population = self.assign_fronts(population)
-        pareto_front = []
-        min_front = infinite
-        for ind in population:
-            if ind.get_Front() < min_front:
-                min_front = ind.get_Front()
-        for ind in population:
-            if ind.get_Front() == min_front:
-                pareto_front.append(ind)
-        return pareto_front
-
-    def calculate_hyper_volume(self, front):
-        front = self.sort_ObjVal(front, 0)
-        lenght = len(front)
-        if lenght == 0:
-            return 0
-        n_objvals = len(front[0].get_ObjVal())
-        main_matrix = []
-        for i in range(n_objvals):
-            obj_vector = []
-            for ind in front:
-                obj_vector.append(ind.get_ObjVal(index = i))
-            main_matrix.append(obj_vector)
-        area = 0
-        for i in range(lenght):
-            accumulator = 1
-            if i == 0:
-                for j in range(n_objvals):
-                    accumulator *= main_matrix[j][i]
-            else:
-                for j in range(n_objvals - 1):
-                    accumulator *= (main_matrix[j][i] - main_matrix[j][i - 1])
-                accumulator *= main_matrix[-1][i]
-            area += accumulator
-        return area
 
 
 
@@ -624,29 +395,6 @@ class NSGA2_v2:
 #         generation += 1
 #     return archive
 
-# #Convergence through area under front
-# def run_GA_convergence_v1(n_ind, gene_limits, evaluate_func, valid_func = Auxiliary.return_true, mut_rate = 0.0, t_size = 2, gwcfc = 10, tolerance_area = 0.01):
-#     print("Geração 1")
-#     current_pop = create_first_gen(n_ind, evaluate_func, valid_func, gene_limits)
-#     area = area_under_Front(current_pop)
-#     stillness_count = 0
-#     generation = 2
-#     while stillness_count < gwcfc:
-#         print(f"Geração {generation}")
-#         offspring = create_offspring(current_pop, gene_limits, evaluate_func, valid_func, mut_rate = mut_rate, t_size = t_size)
-#         current_pop = reinsert(current_pop, offspring)
-#         new_area = area_under_Front(current_pop)
-#         if abs(area - new_area) < tolerance_area:
-#             stillness_count += 1
-#         else: 
-#             area = new_area
-#             stillness_count = 0
-#         print(area)
-#         print(f'Não há alterações nos melhores indivíduos há {stillness_count} gerações')
-#         generation += 1
-#     return current_pop
-
-
 
 
 # def create_first_gen_new(n_ind, evaluate_func, valid_func, limits, decimal_places = 4):
@@ -668,11 +416,7 @@ class NSGA2_v2:
 #     first_gen = assign_crowding(first_gen)
 #     return first_gen
     
-# def area_under_Front(population):
-#     pareto_front = return_pareto_front(population)
-#     area = calculate_hyper_volume(pareto_front)
-#     return area
-    
+  
 
 
 # def update_archive(archive, pop_new, archive_size, counter):
@@ -724,48 +468,6 @@ class NSGA2_v2:
 # def write_pop(population, file_name):
 #     pass
 
-# def calculate_hyper_volume(front):
-#     front = sort_ObjVal(front, 0)
-#     lenght = len(front)
-#     if lenght == 0:
-#         return 0
-#     n_objvals = len(front[0].get_ObjVal())
-#     #for i in range(n_objvals):
-#     #    minval = sort_ObjVal(front, i)[0].get_ObjVal(i)
-#     #    for ind in front:
-#     #        ind.set_ObjVal(ind.get_ObjVal(i) - minval, index = i)
-#     main_matrix = []
-#     for i in range(n_objvals):
-#         obj_vector = []
-#         for ind in front:
-#             obj_vector.append(ind.get_ObjVal(index = i))
-#         main_matrix.append(obj_vector)
-#     area = 0
-#     for i in range(lenght):
-#         accumulator = 1
-#         if i == 0:
-#             for j in range(n_objvals):
-#                 accumulator *= main_matrix[j][i]
-#         else:
-#             for j in range(n_objvals - 1):
-#                 accumulator *= (main_matrix[j][i] - main_matrix[j][i - 1])
-#             accumulator *= main_matrix[-1][i]
-#         area += accumulator
-#     return area
-
-# def return_pareto_front(population):
-#     population = assign_fronts(population)
-#     pareto_front = []
-#     min_front = infinite
-#     for ind in population:
-#         if ind.get_Front() < min_front:
-#             min_front = ind.get_Front()
-#     for ind in population:
-#         if ind.get_Front() == min_front:
-#             pareto_front.append(ind)
-#     return pareto_front
-
-
 # def strip_not_pareto(population):
 #     i = 0
 #     while i < len(population):
@@ -793,6 +495,150 @@ class NSGA2_v2:
 
 
 
+
+def assign_fronts(pop): #CHECKED - OK1
+    copy = pop.copy()
+    new_pop = []
+    front = 1
+    while len(copy) > 0:
+        assign_domination(copy)
+        i = 0
+        while i < len(copy):
+            if copy[i].get_Dominated_counter() == 0:
+                copy[i].set_Front(front)
+                new_pop.append(copy[i])
+                copy.pop(i)
+            else:
+                i += 1
+        front += 1
+    return new_pop
+
+def assign_domination(population): #CHECKED - OK1
+    n_objvals = len(population[0].get_ObjVal())
+    length = len(population)
+    if length == 1:
+        population[0].set_Dominated_counter(0)
+        return
+    if length == 0:
+        return
+    for i in range(length):
+        dominated_counter = 0
+        for j in range(length):
+            if j == i:
+                continue
+            if calculate_domination(population[j], population[i], n_objvals):
+                dominated_counter += 1
+        population[i].set_Dominated_counter(dominated_counter)
+
+def calculate_domination(indA, indB, n_objvals): #CHECKED - OK1
+    boolA = indA.get_ObjVal(0) <= indB.get_ObjVal(0)
+    boolB = indA.get_ObjVal(0) < indB.get_ObjVal(0)
+    for i in range(1, n_objvals):
+        boolA = boolA and (indA.get_ObjVal(i) <= indB.get_ObjVal(i))
+        boolB = boolB or (indA.get_ObjVal(i) < indB.get_ObjVal(i))
+    return (boolA and boolB) #if True, A dominates B, if False, A does not dominate B
+
+def assign_crowding(pop): #CHECKED - OK1
+    population = pop.copy()
+    n_objvals = len(population[0].get_ObjVal())
+    length = len(population)
+    for ind in population:
+        ind.set_Crowding(0)
+    for i in range(n_objvals):
+        copy = sort_ObjVal(population, i)
+        copy[0].set_Crowding(infinite)
+        copy[-1].set_Crowding(infinite)
+        minval = copy[0].get_ObjVal(i)
+        maxval = copy[-1].get_ObjVal(i)
+        for j in range(1, length - 1):
+            crowding = abs((copy[j + 1].get_ObjVal(i) - copy[j - 1].get_ObjVal(i))/(maxval - minval)) 
+            copy[j].set_Crowding(copy[j].get_Crowding() + crowding)
+    return copy
+
+
+
+
+
+def strip_equal(population): #CHECKED - OK1
+    res = []
+    chrom_vec = []
+    chrom_vec.append(population[0].get_chrom())
+    res.append(population[0])
+    for i in range(1, len(population)):
+        new_chrom = population[i].get_chrom()
+        if new_chrom not in chrom_vec:
+            chrom_vec.append(new_chrom)
+            res.append(population[i])
+    return res
+
+def strip_rejected(population): #CHECKED - OK1 - OK2
+    i = 0
+    while i < len(population): 
+        if not population[i].get_valid():
+            population.pop(i)
+            # i -= 1
+        else:
+            i += 1
+    return population
+
+def area_under_Front(population):
+    pareto_front = return_pareto_front(population)
+    area = calculate_hyper_volume(pareto_front)
+    return area
+
+def sort_ObjVal(population, objval_index): #CHECKED - OK1
+    new_pop = []
+    copy = population.copy()
+    while len(copy) > 0:
+        min_obj_val = infinite
+        i = 0
+        hold = 0
+        while i < len(copy):
+            obj_val = copy[i].get_ObjVal(objval_index)
+            if obj_val < min_obj_val:
+                min_obj_val = obj_val
+                hold = i
+            i += 1
+        new_pop.append(copy[hold])
+        copy.pop(hold)
+    return new_pop
+
+def return_pareto_front(population):
+    population = assign_fronts(population)
+    pareto_front = []
+    min_front = infinite
+    for ind in population:
+        if ind.get_Front() < min_front:
+            min_front = ind.get_Front()
+    for ind in population:
+        if ind.get_Front() == min_front:
+            pareto_front.append(ind)
+    return pareto_front
+
+def calculate_hyper_volume(front):
+    front = sort_ObjVal(front, 0)
+    lenght = len(front)
+    if lenght == 0:
+        return 0
+    n_objvals = len(front[0].get_ObjVal())
+    main_matrix = []
+    for i in range(n_objvals):
+        obj_vector = []
+        for ind in front:
+            obj_vector.append(ind.get_ObjVal(index = i))
+        main_matrix.append(obj_vector)
+    area = 0
+    for i in range(lenght):
+        accumulator = 1
+        if i == 0:
+            for j in range(n_objvals):
+                accumulator *= main_matrix[j][i]
+        else:
+            for j in range(n_objvals - 1):
+                accumulator *= (main_matrix[j][i] - main_matrix[j][i - 1])
+            accumulator *= main_matrix[-1][i]
+        area += accumulator
+    return area
 
 
 
