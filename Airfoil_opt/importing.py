@@ -2,6 +2,7 @@ import numpy as nup
 import math
 import matplotlib.pyplot as plt
 import random
+random.seed()
 from numba import njit, jit
 import time
 import os
