@@ -1,0 +1,158 @@
+Transition in an XFOIL solution is triggered by one of two ways:
+
+  free  transition:  e^n criterion is met
+ forced transition:  a trip or the trailing edge is encountered
+
+The e^n method is always active, and free transition can occur
+upstream of the trip.  The e^n method has the user-specified 
+parameter "Ncrit", which is the log of the amplification factor
+of the most-amplified frequency which triggers transition.
+A suitable value of this parameter depends on the ambient
+disturbance level in which the airfoil operates, and mimics
+the effect of such disturbances on transition.  Below are typical 
+values of Ncrit for various situations.
+
+     situation             Ncrit
+  -----------------        -----
+  sailplane                12-14
+  motorglider              11-13
+  clean wind tunnel        10-12
+  average wind tunnel        9     <=  standard "e^9 method"
+  dirty wind tunnel         4-8
+
+Note: The e^n method in XFOIL is actually the simplified envelope 
+version, which is the same as the full e^n method only for flows 
+with constant H(x). If H is not constant, the two methods differ
+somewhat, but this difference is typically within the uncertainty
+in choosing Ncrit.
+
+The e^n method is only appropriate for predicting transition in 
+situations where the growth of 2-D Tollmien-Schlichting waves via
+linear instability is the dominant transition-initiating mechanism.  
+Fortunately, this happens to be the case in a vast majority of airfoil 
+applications.  Other possible mechanisms are:
+
+* Crossflow instabilities. These occur on swept wings with significant  
+  favorable chordwise pressure gradients.
+
+* Attachment-line transition.  This requires large sweep, large LE
+  radius, and a large Reynolds number.  Occurs primarily on big jets.
+
+* Bypass transition.  This occurs in cases with sufficient wall
+  roughness and/or large freestream turbulence or vibration levels.
+  The linear-instability phase predicted by the e^n method is
+  "bypassed", giving relatively early transition.  Usually occurs
+  in favorable pressure gradients, while the linear-instability
+  mechanism usually dominates in adverse pressure gradients.
+
+If any of these alternative transition mechanisms are present, the
+trips must be set to mimick their effect.  The bypass transition
+mechanism can be mimicked to some extent by the e^n method by 
+setting Ncrit to a small value --- Ncrit=1 or less.  This will 
+cause transition just after linear instability begins.  For
+very large freestream turbulence or roughness in favorable
+pressure gradients, bypass transition can occur before the 
+linear instability threshold, and in this case trips will have 
+to be set as well.
+
+
+Numerical accuracy
+------------------
+
+-- Panel density requirements --
+If strong separation bubbles are present in a viscous solution, then 
+it is very important to have good panel resolution in the region of the 
+bubble(s).  The large gradients at a bubble tend to cause significant 
+numerical errors even if a large number of panels is used. If a separation
+bubble appears to be poorly resolved, it is a good idea to re-panel the 
+airfoil with more points, and/or with points bunched around the bubble 
+region.  The paneling is controlled from the PPAR menu. A good rule of 
+thumb is that the shape parameter Hk just after transition in the bubble 
+should not decrease by more than 1.0 per point.  Likewise, the surface 
+velocity Ue/Vinf should not change by more than 0.05 per point past
+transition, otherwise there may be significant numerical errors in the 
+drag.  The point values can be observed by issuing SYMB from the VPLO menu.
+Moderate chord Reynolds numbers (1-3 million, say) usually require the 
+finest paneling, since the bubbles are still important, but very small. 
+On many airfoils, especially those with small leading edge radii,
+the development of the small bubble which forms just behind the 
+leading edge can have a significant effect on CLmax.  For such cases,
+the default paneling density at the bubble may not be adequate.
+In all cases, inadequate bubble resolution results in a "ragged" 
+or "scalloped" CL vs CD drag polar curve, so fortunately this is 
+easy to spot.
+
+
+Caveats
+=======
+The XFOIL code is not foolproof, and requires some level of aerodynamic
+expertise and common sense on the part of the user.  Although the
+inviscid analysis (OPERi), geometry design (GDES), and Full-Inverse
+(MDES) routines are nearly invulnerable to failure, the Mixed-Inverse
+(QDES) design routines and especially the viscous analysis (OPERv) 
+routines will fail if a "reasonable" problem is not specified.  
+Typical failure scenarios are:
+
+ - Viscous Analysis  (OPERv)
+     * Massive separation from excessive airfoil thickness,
+         flap deflection, or angle of attack
+     * Inherently unsteady flow (von Karman vortex street, etc.)
+     * Poor resolution of leading edge pressure spike
+     * Poor resolution of small viscous features
+         (e.g. separation bubbles)
+     * Reynolds number too low
+
+ - Mixed-Inverse Surface Speed Design  (QDES)
+     * Re-entrant airfoil shape (negative thickness)
+
+A possible consequence of these occurences is an arithmetic fault 
+causing program failure.  This is unlikely, but it does happen
+occasionally. It is therefore a good idea to save any previous work 
+before an ambitious calculation is attempted.
+
+
+The following situations may give problems strictly due to numerical 
+roundoff:
+
+ - Excessively small panel(s) somewhere on the airfoil
+
+ - Airfoil located too far from origin
+
+ - Airfoil too thin
+
+These situations will rarely result in an arithmatic failure, 
+but will typically result in a "ragged" Cp distribution.
+Examine the paneling in the GDES menu, making the GSET command 
+if neceesary to set the current paneling.  Eliminate excessively
+small panels my deleting one or more panel nodes with the
+DELP command.
+
+
+When performing viscous analysis calculations, it is always a good idea
+to sequence runs so that alpha does not change too drastically from one
+case to another.  The Newton solution method always uses the last
+available solution as a starting guess for a new solution, and works
+best if the change from the old to the new solutions is reasonably
+small.  For this reason, it is best to perform difficult calculations
+(such as past CLmax) by gradually increasing alpha.  The ASEQ command in
+OPER is convenient for this.  If the user insists on a large change from
+one point to another, it is best to force a re-initialization of the
+boundary layers with the INIT command from the VPAR menu in OPER before
+the radical calculation is performed.  INIT should always be executed
+whenever the viscous solution blows up but the program doesn't crash.
+
+The viscous analysis will execute no more Newton iterations than
+set by the current iteration limit each time an ALFA, CL, etc. command 
+is issued.  If convergence is not achieved within this limit, ALFA or CL 
+can be issued as often as needed (most easily with "!"), with another 
+set of Newton iterations being performed each time.  This iteration 
+limit can be changed from its default value of 10 with the ITER command 
+in OPER.
+
+One should always be wary of trusting solutions which show regions
+of supersonic flow.  Such flows can be reliably predicted only with 
+a truly nonlinear field method (such as the MSES code).  As a rule
+of thumb, if the maximum Mach number doesn't exceed 1.05 anywhere,
+shock losses will be very small, the Cp distributions will be 
+reasonably accurate, and the drag predicted by XFOIL is likely
+to be accurate.
