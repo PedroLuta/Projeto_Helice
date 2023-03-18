@@ -1,4 +1,5 @@
-from importing import *
+import math
+import numpy as np
 
 def apply_thickness(y, thick):
     for i in range(len(y)):
@@ -29,20 +30,20 @@ def apply_rotation_deg(x, y, angle):
 
 def apply_rotation_rad(x, y, angle):
     rot_mat = [[math.cos(angle), math.sin(angle)], [-math.sin(angle), math.cos(angle)]]
-    x_rot = nup.array([])
-    y_rot = nup.array([])
+    x_rot = np.array([])
+    y_rot = np.array([])
     for i in range(len(x)):
-        case = nup.array([[x[i]], [y[i]]])
-        rotated = nup.matmul(rot_mat, case)
-        x_rot = nup.append(x_rot, rotated[0])
-        y_rot = nup.append(y_rot, rotated[1])
+        case = np.array([[x[i]], [y[i]]])
+        rotated = np.matmul(rot_mat, case)
+        x_rot = np.append(x_rot, rotated[0])
+        y_rot = np.append(y_rot, rotated[1])
     return x_rot, y_rot
 
 
 
 #auxiliary functions
 def read_foil(airfoil_file, header_lines):
-    x, y = nup.loadtxt(airfoil_file, skiprows = header_lines, unpack = True)
+    x, y = np.loadtxt(airfoil_file, skiprows = header_lines, unpack = True)
     return x, y
 
 def count_header_lines(file):
@@ -69,14 +70,14 @@ def split_upper_lower(xx, yy):
             if len(x)%2 == 0:
                 x_lower = x[i-1:]
                 y_lower = y[i-1:]
-                x_upper = nup.flip(x[:i-1])
-                y_upper = nup.flip(y[:i-1])
+                x_upper = np.flip(x[:i-1])
+                y_upper = np.flip(y[:i-1])
                 break
             else:
                 x_lower = x[i-1:]
                 y_lower = y[i-1:]
-                x_upper = nup.flip(x[:i])
-                y_upper = nup.flip(y[:i])
+                x_upper = np.flip(x[:i])
+                y_upper = np.flip(y[:i])
                 break
         diff_remember = x[i]
         i += 1 
@@ -123,10 +124,10 @@ def apply_thickness_on_camber_easy(x, y, thickness):
     xu_copy = xu.copy()
     xu_reverse = xu_copy[::-1]
     yu_reverse = yu[::-1]
-    xu = nup.delete(xu, 0)
-    yl = nup.delete(yl, 0)
-    x = nup.append(xu_reverse, xu)
-    y = nup.append(yu_reverse, yl)
+    xu = np.delete(xu, 0)
+    yl = np.delete(yl, 0)
+    x = np.append(xu_reverse, xu)
+    y = np.append(yu_reverse, yl)
     return x, y
         
 

@@ -1,11 +1,8 @@
-from importing import *
-# import matplotlib.pyplot as plt
-# import random
-# random.seed()
-#from math import inf as infinite
-#import concurrent.futures
-#import Auxiliary
-#from smt.sampling_methods import LHS
+import matplotlib.pyplot as plt
+import random
+random.seed()
+from math import inf as infinite
+import Auxiliary
 
 
 
@@ -394,22 +391,22 @@ class NSGA2_v2:
 
 
 #Convergence through Pareto accumulator
-def run_GA_convergence_v2(n_ind, gene_limits, evaluate_func, valid_func = Auxiliary.return_true, mut_rate = 0.0, t_size = 2, gwcfc = 10, archive_size = -1, decimal_places = 4):
-    if archive_size == -1:
-        archive_size == n_ind*2
-    print("Geração 1")
-    archive = []
-    current_pop = create_first_gen(n_ind, evaluate_func, valid_func, gene_limits, decimal_places = decimal_places)
-    counter = 0
-    generation = 2
-    while counter < gwcfc: 
-        print(f"Geração {generation}")
-        offspring = create_offspring(current_pop, gene_limits, evaluate_func, valid_func, mut_rate = mut_rate, t_size = t_size, decimal_places = decimal_places)
-        current_pop = reinsert(current_pop, offspring)
-        archive, counter = update_archive(archive, current_pop, archive_size, counter)
-        print(counter)
-        generation += 1
-    return archive
+# def run_GA_convergence_v2(n_ind, gene_limits, evaluate_func, valid_func = Auxiliary.return_true, mut_rate = 0.0, t_size = 2, gwcfc = 10, archive_size = -1, decimal_places = 4):
+#     if archive_size == -1:
+#         archive_size == n_ind*2
+#     print("Geração 1")
+#     archive = []
+#     current_pop = create_first_gen(n_ind, evaluate_func, valid_func, gene_limits, decimal_places = decimal_places)
+#     counter = 0
+#     generation = 2
+#     while counter < gwcfc: 
+#         print(f"Geração {generation}")
+#         offspring = create_offspring(current_pop, gene_limits, evaluate_func, valid_func, mut_rate = mut_rate, t_size = t_size, decimal_places = decimal_places)
+#         current_pop = reinsert(current_pop, offspring)
+#         archive, counter = update_archive(archive, current_pop, archive_size, counter)
+#         print(counter)
+#         generation += 1
+#     return archive
 
 
 

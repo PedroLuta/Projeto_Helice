@@ -1,6 +1,9 @@
-from importing import *
 import xfoil_interface
-#import Auxiliary
+import Auxiliary
+import math
+import numpy as np
+pi = np.pi
+euler = np.e
 
 def determine_section_Cl(W_times_chord_times_Cl, kvisc, alphas, airfoil, M, Cl_ini = 1):
     #print("Determining section Cl")
@@ -90,7 +93,7 @@ def blade_design_vortex_v1_1_1(vi, radps, Blades, R, r_vector, airfoil = 'airfoi
                 I2_vec.append(dI2)
                 J1_vec.append(dJ1)
                 J2_vec.append(dJ2)
-        r_aux = nup.delete(r_aux, list_to_delete)
+        r_aux = np.delete(r_aux, list_to_delete)
         I1 = Auxiliary.area_under_curve(r_aux, I1_vec)
         I2 = Auxiliary.area_under_curve(r_aux, I2_vec)
         J1 = Auxiliary.area_under_curve(r_aux, J1_vec)

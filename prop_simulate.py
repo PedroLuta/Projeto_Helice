@@ -1,5 +1,8 @@
-from importing import *
 import xfoil_interface
+import math
+import numpy as np
+pi = np.pi
+euler = np.euler
 
 def qprop_fixed_pitch(vi, radps, Blades, R, r_vector, Beta_dist, chord_dist, airfoil = 'airfoils\\airfoil.txt', rho = 1.225, dvisc = 1.8/100000, alphas = [-5, 10, 1]):
     #CHORD DISTRIBUTION TAKEN AS INPUT
@@ -112,8 +115,6 @@ def induction_qprop_fixed_pitch(OMG, rr, BLDS, a_list, CL_list, CD_list, Beta, R
             return UA, UT, CL, CD
 
 def induction_momentum_Ftip_fixed_pitch(radps, rr, Cl_c, Cd_c, alpha_c, Beta, Blades, rho, R, chord, Vax_before):
-    #pi = nup.pi
-    #euler = nup.e
     check = 0
     ai = 0.1
     ai0 = 0.01

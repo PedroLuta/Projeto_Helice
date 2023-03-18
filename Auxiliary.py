@@ -1,4 +1,8 @@
-from importing import *
+import random
+random.seed()
+from math import inf as infinite
+import numpy as np
+import math
 
 def area_under_curve(x, curve):
     area = 0
@@ -32,12 +36,12 @@ def newt_rhap(function, derivative, ans = [], tolerance = 0.0001, init = 0.01):
 def bisection(ans, function, tolerance = 0.0001, interval = [0, 1]):
     a, b = interval[0], interval[1]
     val_a, val_b = function(ans, a), function(ans, b)
-    sign_a, sign_b = nup.sign(val_a), nup.sign(val_b)
+    sign_a, sign_b = np.sign(val_a), np.sign(val_b)
     max_iterations = math.log((b - a)/tolerance, 2)
     for _ in range(max_iterations + 2):
         c = (a + b)/2
         val_c = function(ans, c)
-        sign_c = nup.sign(val_c)
+        sign_c = np.sign(val_c)
         if (sign_a != sign_c):
             b = c
             val_b = val_c

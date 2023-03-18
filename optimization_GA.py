@@ -1,5 +1,8 @@
-from importing import *
-#import Auxiliary
+import matplotlib.pyplot as plt
+import math
+import random
+random.seed()
+import Auxiliary
 
 class Individual:
     def __init__(self, chrom = [], ObjVal = 0, valid = True):
