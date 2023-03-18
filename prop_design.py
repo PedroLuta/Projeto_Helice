@@ -196,3 +196,39 @@ def blade_design_vortex_v1_2_1(vi, radps, Blades, R, r_vector, Cl_ref = 1, a_ref
 
     return chord_vector, Beta_vector
 
+
+
+
+
+def simple_pitch_inches1(r_vector_inches, Pitch_inches): #r_vector and pitch in inches
+    r_vector = [rr*0.0254 for rr in r_vector_inches]
+    Pitch = Pitch_inches*0.0254
+    return simple_pitch(r_vector, Pitch)
+
+def simple_pitch_inches2(r_vector, Pitch_inches): #only pitch in inches
+    Pitch = Pitch_inches*0.0254
+    return simple_pitch(r_vector, Pitch)
+
+def simple_pitch(r_vector, Pitch): #All values in meters
+    Beta_dist = []
+    for rr in r_vector:
+        Beta_dist.append(math.degrees(math.atan(Pitch/(2*pi*rr))))
+    return Beta_dist
+
+
+
+
+def compatibility_function(point1, point2, value1, value2, der1, der2):
+    M = np.zeros((4, 4))
+    M[0] = [point2**3, point2**2, point2, 1]
+    M[1] = [point1**3, point1**2, point1, 1]
+    M[2] = [3*(point2**2), 2*point2, 1, 0]
+    M[3] = [3*(point1**2), 2*point1, 1, 0]
+    
+    rhs = np.array(([value2], [value1], [der2], [der1]))
+
+    coeffs = np.squeeze(np.transpose(np.matmul(np.linalg.inv(M), rhs)))
+
+    return coeffs
+
+#print(compatibility_function(0.1, 0.3, 0, 30, 0, 0))
