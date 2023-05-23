@@ -1,0 +1,3 @@
+qprop.f
+    -> all comments deleted
+    -> code idented python-like
