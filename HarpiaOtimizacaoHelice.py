@@ -7,8 +7,11 @@ VelocityVector_m_s = [0, 3, 6, 9, 12, 15, 18]
 MotorKV_rpm_V = 450
 MotorNoLoadCurrent_A = 1.4
 MaxCurrent_A = 54
-MotorInternalResistance_ohm = 0.032
-BatteryVoltage_V = 22.2
+MotorResistance_ohm = 0.032
+BatteryVoltage_V = 22.2 #DEIXAR VOLTAGEM LIVRE -> SE PASSAR DE 22.2 DESCARTA
+Power_W = 700
+
+CurrentOutput_A = Power_W/BatteryVoltage_V
 
 #Genes Contínuos -> Diametro, Croot, Cmax, rmax, Ctip, Passo, Coletivo
 #Genes Discretos -> Numero de pas
@@ -34,8 +37,42 @@ def Evaluation(Chromossome):
     TwistDistribution_deg = prop_design.simple_pitch(r_R*Diameter_m/2, Pitch_m)
     TwistDistributionCollective_deg = [twist + Colective_deg for twist in TwistDistribution_deg]
 
+    for AxialVelocity_m_s in [0, 3, 6, 9, 12, 15]:
+        Omega_rad_s = 1
+        TorquePropeller_Nm = 0
+        #MotorVoltage(Omega_rad_s, TorquePropeller_Nm)
+        for _ in range(50):
+            #calcular torque requerido pela hélice no OMG atual
+            #MotorTorque(Omega_rad_s, Voltage)
+            #Resíduos
+            #Se voltagem for maior que a da bateria, fazer algo
+            #Iterar
+            pass
+
+
     #CurrentOutput_A = (BatteryVoltage_V - (RPM/KV_rpm_V))/MotorResistance_ohm
-    #PowerOutput_W = BatteryVoltage_V*CurrentOutput_A
+    def MotorTorque(Omega_rad_s, Voltage_V):
+        #inputs: Omega, Voltagem, Parametros do motor
+        #outputs: Torque, Torque_OMG, Torque_VOLT, Current, Current_OMG, Current_VOLT
+        MotorKV_rad_sV = MotorKV_rpm_V*2*np.pi/60
+        MotorVoltage_V = Omega_rad_s/MotorKV_rad_sV
+        dMotorVoltage_V__dOmega_rad_s = 1/MotorKV_rad_sV
+
+        MotorCurrent_A = (Voltage_V - MotorVoltage_V)/MotorResistance_ohm
+        dMotorCurrent_A__dOmega_rad_s = - dMotorVoltage_V__dOmega_rad_s/MotorResistance_ohm
+        dMotorCurrent_A__dVoltage_V = 1/MotorResistance_ohm
+
+        MotorTorque_Nm = (MotorCurrent_A - MotorNoLoadCurrent_A)/MotorKV_rad_sV
+        dMotorTorque_Nm__dOmega_rad_s = dMotorCurrent_A__dOmega_rad_s/MotorKV_rad_sV
+        dMotorTorque_Nm__dVoltage_V = dMotorCurrent_A__dVoltage_V/MotorKV_rad_sV
+        
+        return MotorTorque_Nm, dMotorTorque_Nm__dOmega_rad_s, dMotorTorque_Nm__dVoltage_V, MotorCurrent_A, dMotorCurrent_A__dOmega_rad_s, dMotorCurrent_A__dVoltage_V
+    def MotorVoltage():
+        #inputs: Omega, Torque, Parametros do motor
+        #outputs: Volt, Volt_OMG, Volt_TORQUE, Amp, Amp_OMG, Amp_TORQUE
+
+        #AMPS = Q*KVRAD + ZLOADI
+        pass
 
 def Validation(Chromossome):
     Diameter_m = Chromossome[0]
