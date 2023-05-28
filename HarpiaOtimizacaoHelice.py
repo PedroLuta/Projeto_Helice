@@ -39,7 +39,7 @@ def Evaluation(Chromossome):
 
     for AxialVelocity_m_s in [0, 3, 6, 9, 12, 15]:
         Omega_rad_s = 1
-        TorquePropeller_Nm = 0
+        PropellerTorque_Nm = 0
         #MotorVoltage(Omega_rad_s, TorquePropeller_Nm)
         for _ in range(50):
             #calcular torque requerido pela hélice no OMG atual
@@ -67,12 +67,20 @@ def Evaluation(Chromossome):
         dMotorTorque_Nm__dVoltage_V = dMotorCurrent_A__dVoltage_V/MotorKV_rad_sV
         
         return MotorTorque_Nm, dMotorTorque_Nm__dOmega_rad_s, dMotorTorque_Nm__dVoltage_V, MotorCurrent_A, dMotorCurrent_A__dOmega_rad_s, dMotorCurrent_A__dVoltage_V
-    def MotorVoltage():
+    def MotorVoltage(Omega_rad_s, PropellerTorque_Nm):
         #inputs: Omega, Torque, Parametros do motor
         #outputs: Volt, Volt_OMG, Volt_TORQUE, Amp, Amp_OMG, Amp_TORQUE
+        
+        MotorKV_rad_sV = MotorKV_rpm_V*2*np.pi/60
+        MotorCurrent_A = (PropellerTorque_Nm*MotorKV_rad_sV) + MotorNoLoadCurrent_A
+        Voltage_V = (MotorCurrent_A*MotorResistance_ohm) + (Omega_rad_s/MotorKV_rad_sV)
 
-        #AMPS = Q*KVRAD + ZLOADI
-        pass
+        for _ in range(50):
+            MotorTorque_Nm, dMotorTorque_Nm__dOmega_rad_s, dMotorTorque_Nm__dVoltage_V, MotorCurrent_A, dMotorCurrent_A__dOmega_rad_s, dMotorCurrent_A__dVoltage_V = MotorTorque(Omega_rad_s, Voltage_V)
+            Residue1 = MotorTorque_Nm - PropellerTorque_Nm
+            Residue1_VOLT = dMotorTorque_Nm__dVoltage_V
+            dVoltage_V = -Residue1/Residue1_VOLT
+            
 
 def Validation(Chromossome):
     Diameter_m = Chromossome[0]

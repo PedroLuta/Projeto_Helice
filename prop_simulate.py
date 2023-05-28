@@ -1,6 +1,7 @@
 import xfoil_interface
 import math
 import numpy as np
+import pandas as pd
 pi = np.pi
 euler = np.euler
 
@@ -60,6 +61,29 @@ def momentum_Ftip_fixed_pitch(vi, radps, Blades, R, r_vector, Beta_dist, chord_d
         Re = ((V*chord)/kvisc)
 
         alpha_c, Cl_c, Cd_c = xfoil_interface.get_curve_com_default(Re, a1, a2, astep, afile = airfoil)
+
+        dT, dQ = induction_momentum_Ftip_fixed_pitch(radps, rr, Cl_c, Cd_c, alpha_c, Beta, Blades, rho, R, chord, vi) 
+        dQ_vector.append(dQ)
+        dT_vector.append(dT)
+
+    return dT_vector, dQ_vector
+
+def BEMT_PrePolars(vi, radps, Blades, R, r_vector, Beta_dist, chord_dist, CLPolar = 'TestCLPolar.dat', CDPolar = 'TestCDPolar.dat', rho = 1.225, dvisc = 1.8/100000):
+    kvisc = dvisc/rho
+
+    dT_vector = []
+    dQ_vector = []
+
+    for i in range(len(r_vector)):
+        rr = r_vector[i]
+        chord = chord_dist[i]
+        Beta = Beta_dist[i]
+
+        Vr = radps*rr
+        V = ((Vr**2)+(vi**2))**0.5
+        Re = ((V*chord)/kvisc)
+
+        # alpha_c, Cl_c, Cd_c = xfoil_interface.get_curve_com_default(Re, a1, a2, astep, afile = airfoil)
 
         dT, dQ = induction_momentum_Ftip_fixed_pitch(radps, rr, Cl_c, Cd_c, alpha_c, Beta, Blades, rho, R, chord, vi) 
         dQ_vector.append(dQ)
