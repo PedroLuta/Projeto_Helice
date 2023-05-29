@@ -68,11 +68,14 @@ def MotorTorque(Omega_rad_s, Voltage_V):
     #inputs: Omega, Voltagem, Parametros do motor
     #outputs: Torque, Torque_OMG, Torque_VOLT, Current, Current_OMG, Current_VOLT
     MotorKV_rad_sV = MotorKV_rpm_V*2*np.pi/60
+
     MotorVoltage_V = Omega_rad_s/MotorKV_rad_sV
     dMotorVoltageByOmega_Vs_rad = 1/MotorKV_rad_sV
+
     MotorCurrent_A = (Voltage_V - MotorVoltage_V)/MotorResistance_ohm
     dMotorCurrentByOmega_As_rad = - dMotorVoltageByOmega_Vs_rad/MotorResistance_ohm
     dMotorCurrentByVoltage_A_V = 1/MotorResistance_ohm
+
     MotorTorque_Nm = (MotorCurrent_A - MotorNoLoadCurrent_A)/MotorKV_rad_sV
     dMotorTorqueByOmega_sNm_rad = dMotorCurrentByOmega_As_rad/MotorKV_rad_sV
     dMotorTorqueByVoltage_Nm_V = dMotorCurrentByVoltage_A_V/MotorKV_rad_sV
@@ -83,8 +86,10 @@ def MotorVoltage(Omega_rad_s, PropellerTorque_Nm):
     #inputs: Omega, Torque, Parametros do motor
     #outputs: Volt, Volt_OMG, Volt_TORQUE, Amp, Amp_OMG, Amp_TORQUE
     MotorKV_rad_sV = MotorKV_rpm_V*2*np.pi/60
+
     MotorCurrent_A = (PropellerTorque_Nm*MotorKV_rad_sV) + MotorNoLoadCurrent_A
     Voltage_V = (MotorCurrent_A*MotorResistance_ohm) + (Omega_rad_s/MotorKV_rad_sV)
+
     for _ in range(50):
         MotorTorque_Nm, dMotorTorqueByOmega_sNm_rad, dMotorTorqueByVoltage_Nm_V, MotorCurrent_A, dMotorCurrentByOmega_As_rad, dMotorCurrentByVoltage_A_V = MotorTorque(Omega_rad_s, Voltage_V)
         Residue = MotorTorque_Nm - PropellerTorque_Nm
@@ -93,6 +98,7 @@ def MotorVoltage(Omega_rad_s, PropellerTorque_Nm):
         if dVoltage_V < (10**(-8))*max(1, abs(Voltage_V)):
             break
         Voltage_V += dVoltage_V
+        
     dResidueByOmega_s_rad = dMotorTorqueByOmega_sNm_rad
     dResidueByTorque_1_Nm = -1
 
